@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.school.project_dev.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.school.project_dev.pojo.User" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="heimgpath" property="heimgpath" jdbcType="VARCHAR" />
+    <result column="praisenum" property="praisenum" jdbcType="INTEGER" />
+    <result column="ugrade" property="ugrade" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,40 @@
+server:
+  port: 8060
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://47.94.9.197:3306/project?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      connection-test-query: select 1 # 用来验证从连接池取出的连接, 其实若是连接成功，那么取出来的值也为1
+      pool-name: projectPool
+      username: root     # 天坑系列：当你用hikari连接池连接远程数据库的时候，一定要加上用户名与 这个数据库的密码和用户
+      password: root     # 在本地可以不用加，但是访问远程数据库的时候，一定要加上 ！！！！！！  否则，你会后悔的
+  thymeleaf:
+    prefix: classpath:/templates/    # set resolve path,  so you must put .html into this "templates" catalog
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    enabled: true    # use this modle engine
+  resources:
+    static-locations: classpath:/static,classpath:/templates   # set the static resources catalog, such as images, static page
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.school.project_dev.pojo
+
+mapper:
+  mappers: com.school.project_dev.myMapper.MyMapper   #在yml配置文件中配置通用mapper的位置
+  not-empty: false    # 在进行数据库操作的的时候，判断表达式 username != null, 是否追加 username != ''
+  identity: MYSQL
+
